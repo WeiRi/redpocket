@@ -20,9 +20,10 @@
 </table>
 </form>
 <hr>
-开启红包雨<a href="admin">进入红包雨界面</a><hr>
+开启红包雨<a href="luckyadmin">进入红包雨界面</a><hr>
 <a href="luck">进入抢红包界面</a><hr>
 <a href="program">进入打赏界面</a><hr>
+<a href="programlist">查看节目打赏名次</a>
 现在服务器的时间是<c:out value="${serverTime }"></c:out>
 
 
