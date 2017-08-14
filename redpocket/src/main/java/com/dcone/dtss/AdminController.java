@@ -18,8 +18,8 @@ import form.WalletForm;
 /**
  * 
  * @author wrs
- *³¬¼¶ÓÃ»§½øĞĞºì°üÓêµÈ²Ù×÷
- *ºóÆÚÓ¦ÉèÖÃ¼ì²éÓÃ»§ÊÇ·ñÎª³¬¼¶ÓÃ»§£¬·ñÔò¾Ü¾ø·ÃÎÊ
+ *è¶…çº§ç”¨æˆ·è¿›è¡Œçº¢åŒ…é›¨ç­‰æ“ä½œ
+ *åæœŸåº”è®¾ç½®æ£€æŸ¥ç”¨æˆ·æ˜¯å¦ä¸ºè¶…çº§ç”¨æˆ·ï¼Œå¦åˆ™æ‹’ç»è®¿é—®
  */
 @Controller
 public class AdminController {
@@ -27,26 +27,26 @@ public class AdminController {
 	boolean flag = false;
 	@Autowired
 	JdbcTemplate template;
-	/**ÅĞ¶ÏÓÃ»§ÊÇ·ñµÇÂ¼
-	 * µÇÂ¼³É¹¦ºóÏÔÊ¾adminÒ³Ãæ
+	/**åˆ¤æ–­ç”¨æˆ·æ˜¯å¦ç™»å½•
+	 * ç™»å½•æˆåŠŸåæ˜¾ç¤ºadminé¡µé¢
 	 * @return
 	 */
 	@RequestMapping("/luckyadmin")
 	public String admin() {
-		//ÅĞ¶ÏÓÃ»§ÊÇ·ñµÇÂ¼
-		//µÇÂ¼³É¹¦ºóÏÔÊ¾adminÒ³Ãæ
+		//åˆ¤æ–­ç”¨æˆ·æ˜¯å¦ç™»å½•
+		//ç™»å½•æˆåŠŸåæ˜¾ç¤ºadminé¡µé¢
 		return "luckymoney";
 	}
 	
 	
 	/**
-	 * ¿ªÆôºì°üÓê
-	 * @param round ºì°üÓêÂÖ´Î
-	 * @return ºì°üÓê½á¹û½çÃæ
+	 * å¼€å¯çº¢åŒ…é›¨
+	 * @param round çº¢åŒ…é›¨è½®æ¬¡
+	 * @return çº¢åŒ…é›¨ç»“æœç•Œé¢
 	 */
 	@RequestMapping("/luck_check") 
 	public String Lucky_on(String round) {
-		System.out.println("ºì°üÓê¿ªÆô£¡");
+		System.out.println("çº¢åŒ…é›¨å¼€å¯ï¼");
 		LuckyNumberThread t = new LuckyNumberThread();
 		t.setTemplate(template);
 		int r = 0;
@@ -61,23 +61,23 @@ public class AdminController {
 		return "luckymoney";
 	}
 	/**
-	 * ²éÑ¯È«²¿ºì°ü·¢·Å¼ÇÂ¼
+	 * æŸ¥è¯¢å…¨éƒ¨çº¢åŒ…å‘æ”¾è®°å½•
 	 * @param model
-	 * @return ÏÔÊ¾ËùÓĞºì°ü·¢·Å¼ÇÂ¼
+	 * @return æ˜¾ç¤ºæ‰€æœ‰çº¢åŒ…å‘æ”¾è®°å½•
 	 */
 	@RequestMapping("/viewrecord")
 	public String viewrecord(Model model) {
 		List<ln_record> wanted=LN_RecordDAO.getAllRecords(template);
 		String str1="",str2="",str3="",str4="",str5="";
 		if(wanted!=null) {
-			str1="Á÷Ë®ºÅ";
-			str2="ºì°üÓêÂÖ´Î";
-			str3="ÓÃ»§Ç®°üid";
-			str4="ºì°üÊı¶î";
-			str5="½»Ò×Ê±¼ä";
+			str1="æµæ°´å·";
+			str2="çº¢åŒ…é›¨è½®æ¬¡";
+			str3="ç”¨æˆ·é’±åŒ…id";
+			str4="çº¢åŒ…æ•°é¢";
+			str5="äº¤æ˜“æ—¶é—´";
 		}
 		else {
-			str1="ÔİÎŞºì°üÓêÏà¹Ø½»Ò×¼ÇÂ¼£¡";
+			str1="æš‚æ— çº¢åŒ…é›¨ç›¸å…³äº¤æ˜“è®°å½•ï¼";
 		}
 		model.addAttribute("str1", str1);
 		model.addAttribute("str2", str2);

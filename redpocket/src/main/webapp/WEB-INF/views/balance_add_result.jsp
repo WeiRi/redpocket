@@ -11,6 +11,8 @@
 这个页面显示充值结果!
 <hr>
 ${result}
+<p>用户  ${username} 的余额为${money}元</p>
+
 <a href="balance_add">返回充值页面</a>
 <a href="/dtss">返回主页</a>
 </body>

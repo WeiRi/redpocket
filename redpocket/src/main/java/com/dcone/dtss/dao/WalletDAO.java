@@ -16,28 +16,29 @@ import com.dcone.dtss.model.dc_wallet;
 /**
  * 
  * @author wrs
- *´¦ÀíÓÃ»§Ç®°ü²Ù×÷
+ *å¤„ç†ç”¨æˆ·é’±åŒ…æ“ä½œ
  */
 public class WalletDAO {
 	/**
-	 * ÓÃ»§ÕË»§³äÖµ
-	 * @param itcode ÓÃ»§µÄÔ±¹¤ºÅ
-	 * @param username ÓÃ»§µÄĞÕÃû
-	 * @param amount ³äÖµµÄ½ğ¶î
-	 * @param locale Ê±¼äÇøÓò
-	 * @param jdbcTemplate spring jdbcTemplate ¶ÔÏó
-	 * @return 1,³É¹¦;-2,ÓÃ»§ĞÕÃûÓëÔ±¹¤ºÅ²»Æ¥Åä;-1,Êı¾İ¿â²Ù×÷´íÎó
+	 * ç”¨æˆ·è´¦æˆ·å……å€¼
+	 * @param itcode ç”¨æˆ·çš„å‘˜å·¥å·
+	 * @param username ç”¨æˆ·çš„å§“å
+	 * @param amount å……å€¼çš„é‡‘é¢
+	 * @param locale æ—¶é—´åŒºåŸŸ
+	 * @param jdbcTemplate spring jdbcTemplate å¯¹è±¡
+	 * @return 1,æˆåŠŸ;-2,ç”¨æˆ·å§“åä¸å‘˜å·¥å·ä¸åŒ¹é…;-1,æ•°æ®åº“æ“ä½œé”™è¯¯
 	 */
 	public static int balance_add(String itcode,String username, int amount ,Locale locale, JdbcTemplate jdbcTemplate) {
 		//RowMapper<dc_user> user_mapper = new BeanPropertyRowMapper<dc_user>(dc_user.class);
 		try {
 			//dc_user user = jdbcTemplate.queryForObject("select * from dc_user where itcode=? and username=?", user_mapper, new Object[] {itcode, username});
+			
 			dc_user user=UserDAO.getUserByItcode(itcode, jdbcTemplate);
-			dc_user user2=UserDAO.getUserByName(username, jdbcTemplate);
+			/*dc_user user2=UserDAO.getUserByName(username, jdbcTemplate);
 			if(user.getUid()!=user2.getUid()) {
-				System.out.println("ÓÃ»§ÃûºÍitcode²»Æ¥Åä£¡");
+				System.out.println("ç”¨æˆ·åå’Œitcodeä¸åŒ¹é…ï¼");
 				return -2;
-			}
+			}*/
 			//RowMapper<dc_wallet> wallet_mapper = new BeanPropertyRowMapper<dc_wallet>(dc_wallet.class);
 			//dc_wallet wallet  = jdbcTemplate.queryForObject("select * from dc_wallet where uid  = ?", wallet_mapper, user.getUid());
 			dc_wallet wallet=WalletDAO.getWalletByUid(user.getUid(), jdbcTemplate);
@@ -51,8 +52,8 @@ public class WalletDAO {
 	        SimpleDateFormat fmtDate1 = new SimpleDateFormat(url1);
 	        SimpleDateFormat fmtDate2 = new SimpleDateFormat(url2);
 	        String temp=fmtDate1.format(date)+fmtDate2.format(date);
-	        //ĞèÒªÏòtradedaoÖĞ¼ÓÈë³äÖµÒ»Ïî
-	        int i=TradeDAO.createTrade(wallet.getWid(), temp, amount, "³äÖµ", jdbcTemplate);
+	        //éœ€è¦å‘tradedaoä¸­åŠ å…¥å……å€¼ä¸€é¡¹
+	        int i=TradeDAO.createTrade(wallet.getWid(), temp, amount, "å……å€¼", jdbcTemplate);
 			if(i>0) {
 				int j = walletAddByUid(wallet.getUid(), amount, jdbcTemplate);
 				if(j>0) {
@@ -68,10 +69,10 @@ public class WalletDAO {
 		return 0;
 	}
 	/**
-	 * »ñÈ¡Ç®°ü
-	 * @param uid ÓÃ»§id
+	 * è·å–é’±åŒ…
+	 * @param uid ç”¨æˆ·id
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§Ç®°ü
+	 * @return ç”¨æˆ·é’±åŒ…
 	 */
 	public static dc_wallet getWalletByUid(int uid,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_wallet> wallet_mapper=new BeanPropertyRowMapper<dc_wallet>(dc_wallet.class);
@@ -80,15 +81,15 @@ public class WalletDAO {
 			return wanted;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("uid´íÎó,ÕÒ²»µ½ÓÃ»§Ç®°ü!");
+			System.out.println("uidé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·é’±åŒ…!");
 		}
 		return null;
 	}
 	/**
-	 * »ñÈ¡Ç®°ü
-	 * @param wid ÓÃ»§Ç®°üid
+	 * è·å–é’±åŒ…
+	 * @param wid ç”¨æˆ·é’±åŒ…id
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§Ç®°ü
+	 * @return ç”¨æˆ·é’±åŒ…
 	 */
 	public  static dc_wallet getWalletByWid(int wid,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_wallet> wallet_mapper=new BeanPropertyRowMapper<dc_wallet>(dc_wallet.class);
@@ -97,15 +98,15 @@ public class WalletDAO {
 			return wanted;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("wid´íÎó,ÕÒ²»µ½ÓÃ»§Ç®°ü!");
+			System.out.println("widé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·é’±åŒ…!");
 		}
 		return null;
 	}
 	/**
-	 * »ñÈ¡Ç®°ü
-	 * @param itcode ÓÃ»§Ô±¹¤ºÅ
+	 * è·å–é’±åŒ…
+	 * @param itcode ç”¨æˆ·å‘˜å·¥å·
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§Ç®°ü
+	 * @return ç”¨æˆ·é’±åŒ…
 	 */
 	public static dc_wallet getWalletByItcode(String itcode,JdbcTemplate jdbcTemplate) {
 		try {
@@ -114,16 +115,16 @@ public class WalletDAO {
 			return wanted;
 		}
 		catch(Exception e) {
-			System.out.println("¸ù¾İitcodeÑ°ÕÒÓÃ»§Ê§°Ü£¡");
+			System.out.println("æ ¹æ®itcodeå¯»æ‰¾ç”¨æˆ·å¤±è´¥ï¼");
 			e.printStackTrace();
 		}
 		return null;
 	}
 	/**
-	 * ³õÊ¼»¯ÓÃ»§Ç®°ü
-	 * @param uid ÓÃ»§id
+	 * åˆå§‹åŒ–ç”¨æˆ·é’±åŒ…
+	 * @param uid ç”¨æˆ·id
 	 * @param jdbcTemplate
-	 * @return true³É¹¦£¬falseÊ§°Ü
+	 * @return trueæˆåŠŸï¼Œfalseå¤±è´¥
 	 */
 	public static boolean initWallet(int uid,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_wallet> wallet_mapper=new BeanPropertyRowMapper<dc_wallet>(dc_wallet.class);
@@ -133,19 +134,19 @@ public class WalletDAO {
 				return true;
 			}
 			else {
-				System.out.println("²åÈë´íÎó£¡");
+				System.out.println("æ’å…¥é”™è¯¯ï¼");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("uid´íÎó,³õÊ¼»¯ÓÃ»§Ç®°üÊ§°Ü!");
+			System.out.println("uidé”™è¯¯,åˆå§‹åŒ–ç”¨æˆ·é’±åŒ…å¤±è´¥!");
 		}
 		return false;
 	}
 	/**
-	 * ³õÊ¼»¯ÓÃ»§Ç®°ü
-	 * @param itcode ÓÃ»§Ô±¹¤ºÅ
+	 * åˆå§‹åŒ–ç”¨æˆ·é’±åŒ…
+	 * @param itcode ç”¨æˆ·å‘˜å·¥å·
 	 * @param jdbcTemplate
-	 * @return true³É¹¦£¬falseÊ§°Ü
+	 * @return trueæˆåŠŸï¼Œfalseå¤±è´¥
 	 */
 	public static boolean initWallet(String itcode,JdbcTemplate jdbcTemplate) {
 		try {
@@ -155,20 +156,20 @@ public class WalletDAO {
 				return true;
 			}
 			else {
-				System.out.println("²åÈëÓĞ´íÎó£¡");
+				System.out.println("æ’å…¥æœ‰é”™è¯¯ï¼");
 				}
 		}catch(Exception e) {
-			System.out.println("itcode´íÎó,³õÊ¼»¯ÓÃ»§Ç®°üÊ§°Ü!");
+			System.out.println("itcodeé”™è¯¯,åˆå§‹åŒ–ç”¨æˆ·é’±åŒ…å¤±è´¥!");
 			e.printStackTrace();
 		}
 		return false;
 	}
 	/**
-	 * Ç®°ü³äÖµ
-	 * @param wid Ç®°üid
-	 * @param number Êı¶î
+	 * é’±åŒ…å……å€¼
+	 * @param wid é’±åŒ…id
+	 * @param number æ•°é¢
 	 * @param jdbcTemplate
-	 * @return 1³É¹¦£¬0Ê§°Ü
+	 * @return 1æˆåŠŸï¼Œ0å¤±è´¥
 	 */
 	public static int walletAddByWid(int wid,int number,JdbcTemplate jdbcTemplate) {
 		try {
@@ -176,37 +177,37 @@ public class WalletDAO {
 			if(i>0)
 				return 1;
 		}catch(Exception e) {
-			System.out.println("Ôö¼ÓÇ®°üÓà¶îÊ§°Ü£¡");
+			System.out.println("å¢åŠ é’±åŒ…ä½™é¢å¤±è´¥ï¼");
 			e.printStackTrace();
 		}
 		return 0;
 	}
 	/**
-	 * Ç®°ü³äÖµ
-	 * @param uid ÓÃ»§id
-	 * @param number Êı¶î
+	 * é’±åŒ…å……å€¼
+	 * @param uid ç”¨æˆ·id
+	 * @param number æ•°é¢
 	 * @param jdbcTemplate
-	 * @return 1³É¹¦£¬0Ê§°Ü
+	 * @return 1æˆåŠŸï¼Œ0å¤±è´¥
 	 */
 	public static int walletAddByUid(int uid,int number,JdbcTemplate jdbcTemplate) {
 		dc_wallet wallet=getWalletByUid(uid,jdbcTemplate);
 		return walletAddByWid(wallet.getWid(),number, jdbcTemplate);
 	}
 	/**
-	 * Ç®°ü³äÖµ
-	 * @param itcode ÓÃ»§Ô±¹¤ºÅ
-	 * @param number Êı¶î
+	 * é’±åŒ…å……å€¼
+	 * @param itcode ç”¨æˆ·å‘˜å·¥å·
+	 * @param number æ•°é¢
 	 * @param jdbcTemplate
-	 * @return 1³É¹¦£¬0Ê§°Ü
+	 * @return 1æˆåŠŸï¼Œ0å¤±è´¥
 	 */
 	public static int walletAddByItcode(String itcode,int number,JdbcTemplate jdbcTemplate) {
 		dc_wallet wallet=getWalletByItcode(itcode,jdbcTemplate);
 		return walletAddByWid(wallet.getWid(),number, jdbcTemplate);
 	}
 	/**
-	 * »ñÈ¡È«²¿Ç®°ü
+	 * è·å–å…¨éƒ¨é’±åŒ…
 	 * @param jdbcTemplate
-	 * @return È«²¿ÓÃ»§Ç®°ü
+	 * @return å…¨éƒ¨ç”¨æˆ·é’±åŒ…
 	 */
 	public static List<dc_wallet> getAllWallets(JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_wallet> wallet_mapper=new BeanPropertyRowMapper<dc_wallet>(dc_wallet.class);
@@ -215,16 +216,16 @@ public class WalletDAO {
 			return wanted;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("´íÎó,ÕÒ²»µ½ÈÎºÎÓÃ»§Ç®°ü!");
+			System.out.println("é”™è¯¯,æ‰¾ä¸åˆ°ä»»ä½•ç”¨æˆ·é’±åŒ…!");
 		}
 		return null;
 	}
 	/**
-	 * ¼õÉÙÕË»§Óà¶î
-	 * @param uid ÓÃ»§id
-	 * @param number Êı¶î
+	 * å‡å°‘è´¦æˆ·ä½™é¢
+	 * @param uid ç”¨æˆ·id
+	 * @param number æ•°é¢
 	 * @param jdbcTemplate
-	 * @return 1³É¹¦£¬0Ê§°Ü
+	 * @return 1æˆåŠŸï¼Œ0å¤±è´¥
 	 */
 	public static int walletMinusByUid(int uid,int number,JdbcTemplate jdbcTemplate) {
 		try {
@@ -232,28 +233,28 @@ public class WalletDAO {
 			if(i>0)
 				return 1;
 		}catch(Exception e) {
-			System.out.println("¼õÉÙÇ®°üÓà¶îÊ§°ÜßÕ£¡");
+			System.out.println("å‡å°‘é’±åŒ…ä½™é¢å¤±è´¥å“’ï¼");
 			e.printStackTrace();
 		}
 		return 0;
 	}
 	/**
-	 * ¼õÉÙÕË»§Óà¶î
-	 * @param wid Ç®°üid
-	 * @param number Êı¶î
+	 * å‡å°‘è´¦æˆ·ä½™é¢
+	 * @param wid é’±åŒ…id
+	 * @param number æ•°é¢
 	 * @param jdbcTemplate
-	 * @return 1³É¹¦£¬0Ê§°Ü
+	 * @return 1æˆåŠŸï¼Œ0å¤±è´¥
 	 */
 	public static int walletMinusByWid(int wid,int number,JdbcTemplate jdbcTemplate) {
 		dc_wallet temp=getWalletByWid(wid,jdbcTemplate);
 		return walletMinusByUid(temp.getUid(),number,jdbcTemplate);
 	}
 	/**
-	 * ¼õÉÙÕË»§Óà¶î
-	 * @param itcode Ô±¹¤ºÅ
-	 * @param number Êı¶î
+	 * å‡å°‘è´¦æˆ·ä½™é¢
+	 * @param itcode å‘˜å·¥å·
+	 * @param number æ•°é¢
 	 * @param jdbcTemplate
-	 * @return 1³É¹¦£¬0Ê§°Ü
+	 * @return 1æˆåŠŸï¼Œ0å¤±è´¥
 	 */
 	public static int walletMinusByItcode(String itcode,int number,JdbcTemplate jdbcTemplate) {
 		dc_wallet temp=getWalletByItcode(itcode,jdbcTemplate);

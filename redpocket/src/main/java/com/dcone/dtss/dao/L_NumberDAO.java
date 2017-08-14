@@ -6,30 +6,30 @@ import com.dcone.dtss.model.l_number;
 /**
  * 
  * @author wrs
- *´¦Àíºì°üÕË»§²Ù×÷
+ *å¤„ç†çº¢åŒ…è´¦æˆ·æ“ä½œ
  */
 public class L_NumberDAO {
 	/**
-	 * »ñÈ¡ºì°üÕË»§Óà¶î
-	 * @param i ºì°üÓêÂÖ´Î
+	 * è·å–çº¢åŒ…è´¦æˆ·ä½™é¢
+	 * @param i çº¢åŒ…é›¨è½®æ¬¡
 	 * @param jdbcTemplate
-	 * @return ºì°üÕË»§Óà¶î»òÕß0
+	 * @return çº¢åŒ…è´¦æˆ·ä½™é¢æˆ–è€…0
 	 */
 	public static int getTotalbyRound(int i,JdbcTemplate jdbcTemplate) {
 		try {
 			int w=jdbcTemplate.queryForInt("select total from luckynumber where round=?;",new Object[] {i});
 			return w;
 		}catch(Exception e) {
-			System.out.println("»ñÈ¡ºì°üÕË»§Óà¶îÊ§°ÜßÕ£¡");
+			System.out.println("è·å–çº¢åŒ…è´¦æˆ·ä½™é¢å¤±è´¥å“’ï¼");
 			e.printStackTrace();
 		}
 		return 0;
 	}
 	/**
-	 * ºì°ü×Ü¶î¼Æ¼õ
-	 * @param round ÂÖ´Î
-	 * @param number ºì°üÊı¶î
-	 * @return 1 ³É¹¦, 0Ê§°Ü
+	 * çº¢åŒ…æ€»é¢è®¡å‡
+	 * @param round è½®æ¬¡
+	 * @param number çº¢åŒ…æ•°é¢
+	 * @return 1 æˆåŠŸ, 0å¤±è´¥
 	 */
 	public static int luckyRain(int round, int number,JdbcTemplate jdbcTemplate) {
 		try {
@@ -37,7 +37,7 @@ public class L_NumberDAO {
 			if(i>0)
 				return 1;
 		}catch(Exception e) {
-			System.out.println("¼õÉÙºì°üÕË»§×ÜÓà¶îÊ§°Ü£¡");
+			System.out.println("å‡å°‘çº¢åŒ…è´¦æˆ·æ€»ä½™é¢å¤±è´¥ï¼");
 			e.printStackTrace();
 		}
 		return 0;

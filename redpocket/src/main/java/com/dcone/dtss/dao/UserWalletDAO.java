@@ -11,14 +11,14 @@ import com.dcone.dtss.model.dc_user_wallet;
 /**
  * 
  * @author wrs
- *´ÓÓÃ»§Ç®°üÊÓÍ¼ÖĞ²éÑ¯
+ *ä»ç”¨æˆ·é’±åŒ…è§†å›¾ä¸­æŸ¥è¯¢
  */
 public class UserWalletDAO {
 	/**
-	 * »ñÈ¡ÓÃ»§Ç®°üĞÅÏ¢
-	 * @param user ÓÃ»§
+	 * è·å–ç”¨æˆ·é’±åŒ…ä¿¡æ¯
+	 * @param user ç”¨æˆ·
 	 * @param jdbctemplate
-	 * @return ÓÃ»§Ç®°üĞÅÏ¢
+	 * @return ç”¨æˆ·é’±åŒ…ä¿¡æ¯
 	 */
 	public dc_user_wallet getWallInfoByUser(dc_user user,JdbcTemplate jdbctemplate) {
 		RowMapper<dc_user_wallet> userwalletmapper=new BeanPropertyRowMapper<dc_user_wallet>(dc_user_wallet.class);
@@ -26,35 +26,35 @@ public class UserWalletDAO {
 			dc_user_wallet wanted=jdbctemplate.queryForObject("select * from dc_user_wallet where uid =?;", userwalletmapper,new Object[] {user.getUid()});
 			return wanted;
 		}catch(Exception e) { 
-			System.out.println("²éÑ¯ÓÃ»§Ç®°ü±íÊ§°Ü£¡");
+			System.out.println("æŸ¥è¯¢ç”¨æˆ·é’±åŒ…è¡¨å¤±è´¥ï¼");
 			e.printStackTrace();
 		}
 		return null;
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§Ç®°üĞÅÏ¢
-	 * @param uid ÓÃ»§id
+	 * è·å–ç”¨æˆ·é’±åŒ…ä¿¡æ¯
+	 * @param uid ç”¨æˆ·id
 	 * @param jdbctemplate
-	 * @return ÓÃ»§Ç®°üĞÅÏ¢
+	 * @return ç”¨æˆ·é’±åŒ…ä¿¡æ¯
 	 */
 	public dc_user_wallet getWallInfoByUid(int uid,JdbcTemplate jdbctemplate) {
 		dc_user user = UserDAO.getUserByUid(uid, jdbctemplate);
 		return getWallInfoByUser(user, jdbctemplate);
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§Ç®°üĞÅÏ¢
-	 * @param itcode ÓÃ»§Ô±¹¤ºÅ
+	 * è·å–ç”¨æˆ·é’±åŒ…ä¿¡æ¯
+	 * @param itcode ç”¨æˆ·å‘˜å·¥å·
 	 * @param jdbctemplate
-	 * @return ÓÃ»§Ç®°üĞÅÏ¢
+	 * @return ç”¨æˆ·é’±åŒ…ä¿¡æ¯
 	 */
 	public dc_user_wallet getWallInfoByItcode(String itcode,JdbcTemplate jdbctemplate) {
 		dc_user user = UserDAO.getUserByItcode(itcode, jdbctemplate);
 		return getWallInfoByUser(user, jdbctemplate);
 	}
 	/**
-	 * »ñÈ¡È«²¿ÓÃ»§Ç®°üĞÅÏ¢
+	 * è·å–å…¨éƒ¨ç”¨æˆ·é’±åŒ…ä¿¡æ¯
 	 * @param jdbctemplate
-	 * @return È«²¿ÓÃ»§Ç®°üĞÅÏ¢
+	 * @return å…¨éƒ¨ç”¨æˆ·é’±åŒ…ä¿¡æ¯
 	 */
 	public List<dc_user_wallet> getAllWallInfoByUser(JdbcTemplate jdbctemplate) {
 		RowMapper<dc_user_wallet> userwalletmapper=new BeanPropertyRowMapper<dc_user_wallet>(dc_user_wallet.class);
@@ -62,7 +62,7 @@ public class UserWalletDAO {
 			List<dc_user_wallet> wanted=jdbctemplate.query("select * from dc_user_wallet;", userwalletmapper);
 			return wanted;
 		}catch(Exception e) {
-			System.out.println("»ñÈ¡È«²¿ÓÃ»§Ç®°üĞÅÏ¢Ê§°Ü£¡");
+			System.out.println("è·å–å…¨éƒ¨ç”¨æˆ·é’±åŒ…ä¿¡æ¯å¤±è´¥ï¼");
 			e.printStackTrace();
 		}
 		return null;

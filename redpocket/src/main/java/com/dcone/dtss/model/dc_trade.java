@@ -2,7 +2,7 @@ package com.dcone.dtss.model;
 /**
  * 
  * @author wrs
- *¼ÇÂ¼½»Ò×ĞÅÏ¢
+ *è®°å½•äº¤æ˜“ä¿¡æ¯
  */
 public class dc_trade {
 	int tid;
@@ -19,11 +19,11 @@ public class dc_trade {
 	}
 	/**
 	 * 
-	 * @param tid ½»Ò×Á÷Ë®ºÅ
-	 * @param wid Ç®°üid
-	 * @param volume ½»Ò×¶î
-	 * @param tradetime ½»Ò×Ê±¼ä
-	 * @param tip ±¸×¢
+	 * @param tid äº¤æ˜“æµæ°´å·
+	 * @param wid é’±åŒ…id
+	 * @param volume äº¤æ˜“é¢
+	 * @param tradetime äº¤æ˜“æ—¶é—´
+	 * @param tip å¤‡æ³¨
 	 */
 	public dc_trade(int tid, int wid, int volume, String tradetime,String tip) {
 		this.tid = tid;
@@ -57,7 +57,7 @@ public class dc_trade {
 		this.tradetime = tradetime;
 	}
 	/**
-	 * ´®ĞĞÊä³ö
+	 * ä¸²è¡Œè¾“å‡º
 	 */
 	@Override
 	public String toString() {

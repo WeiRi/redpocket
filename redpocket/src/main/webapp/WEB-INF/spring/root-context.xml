@@ -3,13 +3,22 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- Root Context: defines shared resources visible to all other web components  --> 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-     <property name="user" value="faker"></property>
-     <property name="password" value="980324"></property>
+     <property name="user" value="miao"></property>
+     <property name="password" value="zxczxc"></property>
      <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
      <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/activity"></property>
     </bean>
+   
+   <!--  
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+     <property name="user" value="faker"></property>
+     <property name="password" value="980324"></property>
+     <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+     <property name="jdbcUrl" value="jdbc:mysql://10.10.15.54:3306/activity"></property>
+    </bean>
+   -->
  
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
      <property name="dataSource" ref="dataSource"></property>

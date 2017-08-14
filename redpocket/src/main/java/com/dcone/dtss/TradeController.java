@@ -18,19 +18,19 @@ import com.dcone.dtss.model.dc_trade;
 /**
  * 
  * @author wrs
- *½»Ò×´¦Àí¿ØÖÆÆ÷
+ *äº¤æ˜“å¤„ç†æ§åˆ¶å™¨
  */
 public class TradeController {
 	private static final Logger logger = LoggerFactory.getLogger(BalanceController.class);
 	@Autowired
     JdbcTemplate jdbcTemplate;
 	/**
-	 * ²éÑ¯Ä³Ìì½»Ò×¼ÇÂ¼
-	 * @param username ÓÃ»§Ãû
-	 * @param itcode Ô±¹¤ºÅ
-	 * @param date ÈÕÆÚ£¬¸ñÊ½2017-2-1
+	 * æŸ¥è¯¢æŸå¤©äº¤æ˜“è®°å½•
+	 * @param username ç”¨æˆ·å
+	 * @param itcode å‘˜å·¥å·
+	 * @param date æ—¥æœŸï¼Œæ ¼å¼2017-2-1
 	 * @param model 
-	 * @return ²éÑ¯½á¹û½çÃæ
+	 * @return æŸ¥è¯¢ç»“æœç•Œé¢
 	 */
 	@RequestMapping(value="/trade_check")
 	public String tradeCheck(String username,String itcode,String date,Model model) {
@@ -47,12 +47,12 @@ public class TradeController {
 			for(dc_trade temp:wanted) 
 				System.out.println(temp.toString());
 			model.addAttribute("list",wanted);
-			model.addAttribute("result", "²éÑ¯³É¹¦£¡£¬ÒÔÏÂÊÇÄú"+date+"µÄ½»Ò×¼ÇÂ¼£º");
-			model.addAttribute("str1", "½»Ò×Á÷Ë®ºÅ");
-			model.addAttribute("str2", "Ç®°üid");
-			model.addAttribute("str3", "×ªÈë½ğ¶î");
-			model.addAttribute("str4", "½»Ò×Ê±¼ä");
-			model.addAttribute("str5","±¸×¢");
+			model.addAttribute("result", "æŸ¥è¯¢æˆåŠŸï¼ï¼Œä»¥ä¸‹æ˜¯æ‚¨"+date+"çš„äº¤æ˜“è®°å½•ï¼š");
+			model.addAttribute("str1", "äº¤æ˜“æµæ°´å·");
+			model.addAttribute("str2", "é’±åŒ…id");
+			model.addAttribute("str3", "è½¬å…¥é‡‘é¢");
+			model.addAttribute("str4", "äº¤æ˜“æ—¶é—´");
+			model.addAttribute("str5","å¤‡æ³¨");
 		}
 		return "trade_check_result";
 	}

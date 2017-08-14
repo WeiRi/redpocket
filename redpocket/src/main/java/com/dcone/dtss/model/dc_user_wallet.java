@@ -2,8 +2,8 @@ package com.dcone.dtss.model;
 /**
  * 
  * @author wrs
- *╪гб╪сц╩╖пео╒рт╪╟г╝╟Эпео╒
- *йгр╩╦Жйсм╪
+ *Х╝╟Е╫∙Г■╗Ф┬╥Д©║Ф│╞Д╩╔Е▐┼И▓╠Е▄┘Д©║Ф│╞
+ *Ф≤╞Д╦─Д╦╙Х╖├Е⌡╬
  */
 public class dc_user_wallet {
 	private int uid;

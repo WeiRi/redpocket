@@ -2,26 +2,31 @@ package com.dcone.dtss.model;
 /**
  * 
  * @author wrs
- *¼ÇÂ¼ÓÃ»§
+ *è®°å½•ç”¨æˆ·
  */
 public class dc_user {
 	int uid;
 	String itcode;
 	String username;
 	int wlock;
+	String password;
+	String portrait;
 	public dc_user() {}
 	/**
 	 * 
-	 * @param uid ÓÃ»§id
-	 * @param itcode ÓÃ»§Ô±¹¤ºÅ
-	 * @param username ÓÃ»§Ãû
-	 * @param wlock ÓÃ»§Ç®°üÊÇ·ñ±»Ëø¶¨
+	 * @param uid ç”¨æˆ·id
+	 * @param itcode ç”¨æˆ·å‘˜å·¥å·
+	 * @param username ç”¨æˆ·å
+	 * @param wlock ç”¨æˆ·é’±åŒ…æ˜¯å¦è¢«é”å®š
 	 */
-	public dc_user(int uid, String itcode,String username,int wlock) {
+	public dc_user(int uid, String itcode, String username, int wlock, String password, String portrait) {
+		super();
 		this.uid = uid;
 		this.itcode = itcode;
 		this.username = username;
-		this.wlock=wlock;
+		this.wlock = wlock;
+		this.password = password;
+		this.portrait = portrait;
 	}
 	public int getUid() {
 		return uid;
@@ -47,8 +52,21 @@ public class dc_user {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getPortrait() {
+		return portrait;
+	}
+	public void setPortrait(String portrait) {
+		this.portrait = portrait;
+	}
 	/**
-	 * ´®ĞĞÊä³ö
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	@Override
 	public String toString() {

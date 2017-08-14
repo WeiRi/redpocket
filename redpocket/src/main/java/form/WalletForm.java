@@ -7,10 +7,10 @@ import javax.validation.constraints.Size;
 /**
  * 
  * @author wrs
- *¼ÇÂ¼³äÖµÒ³ÃæÇ®°ü±íµ¥
- *@param username ÓÃ»§Ãû
- *@param itcode Ô±¹¤ºÅ
- *@param amount ³äÖµÊı¶î
+ *è®°å½•å……å€¼é¡µé¢é’±åŒ…è¡¨å•
+ *@param username ç”¨æˆ·å
+ *@param itcode å‘˜å·¥å·
+ *@param amount å……å€¼æ•°é¢
  */
 public class WalletForm {
 	@NotNull

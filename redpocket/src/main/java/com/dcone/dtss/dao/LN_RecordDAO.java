@@ -9,17 +9,17 @@ import com.dcone.dtss.model.*;
 /**
  * 
  * @author wrs
- *´¦Àíºì°ü¼ÇÂ¼²Ù×÷
+ *å¤„ç†çº¢åŒ…è®°å½•æ“ä½œ
  */
 public class LN_RecordDAO {
 	/**
-	 * ´´½¨·¢ºì°ü¼ÇÂ¼
-	 * @param round ºì°üÓêÂÖ´Î
-	 * @param wallet ÓÃ»§Ç®°ü
-	 * @param number ºì°üÊı¶î
+	 * åˆ›å»ºå‘çº¢åŒ…è®°å½•
+	 * @param round çº¢åŒ…é›¨è½®æ¬¡
+	 * @param wallet ç”¨æˆ·é’±åŒ…
+	 * @param number çº¢åŒ…æ•°é¢
 	 * @param jdbcTemplate
-	 * @param time  ½»Ò×Ê±¼ä
-	 * @return 1³É¹¦,0Ê§°Ü
+	 * @param time  äº¤æ˜“æ—¶é—´
+	 * @return 1æˆåŠŸ,0å¤±è´¥
 	 */
 	public static int newRecord(int round ,dc_wallet wallet,int number,String time,JdbcTemplate jdbcTemplate) {
 		try {
@@ -27,15 +27,15 @@ public class LN_RecordDAO {
 			if(i>0)
 				return 1;
 		}catch(Exception e) {
-			System.out.println("Ìí¼Óºì°üÖ§¸¶¼ÇÂ¼Ê§°Ü£¡");
+			System.out.println("æ·»åŠ çº¢åŒ…æ”¯ä»˜è®°å½•å¤±è´¥ï¼");
 			e.printStackTrace();
 		}
 		return 0;
 	}
 	/**
-	 * »ñÈ¡È«²¿ºì°ü¼ÇÂ¼
+	 * è·å–å…¨éƒ¨çº¢åŒ…è®°å½•
 	 * @param jdbcTemplate
-	 * @return È«²¿ºì°ü¼ÇÂ¼
+	 * @return å…¨éƒ¨çº¢åŒ…è®°å½•
 	 */
 	public static List<ln_record> getAllRecords(JdbcTemplate jdbcTemplate) {
 		RowMapper<ln_record> lnrmapper= new BeanPropertyRowMapper<ln_record>(ln_record.class);
@@ -43,7 +43,7 @@ public class LN_RecordDAO {
 			List<ln_record> wanted=jdbcTemplate.query("select * from luckynumberrecord;", lnrmapper);
 			return wanted;
 		}catch(Exception e) {
-			System.out.println("»ñÈ¡ºì°ü¼ÇÂ¼Ê§°Ü£¡");
+			System.out.println("è·å–çº¢åŒ…è®°å½•å¤±è´¥ï¼");
 			e.printStackTrace();
 		}
 		return null;

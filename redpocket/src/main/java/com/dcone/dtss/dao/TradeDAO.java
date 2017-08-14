@@ -11,14 +11,14 @@ import com.dcone.dtss.model.*;
 /**
  * 
  * @author wrs
- *´¦Àí½»Ò×ĞÅÏ¢
+ *å¤„ç†äº¤æ˜“ä¿¡æ¯
  */
 public class TradeDAO {
 	/**
-	 * »ñÈ¡ÓÃ»§È«²¿½»Ò×
-	 * @param uid ÓÃ»§id
+	 * è·å–ç”¨æˆ·å…¨éƒ¨äº¤æ˜“
+	 * @param uid ç”¨æˆ·id
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§È«²¿½»Ò×
+	 * @return ç”¨æˆ·å…¨éƒ¨äº¤æ˜“
 	 */
 	public List<dc_trade> getTradesByUid(int uid,JdbcTemplate jdbcTemplate){
 		RowMapper<dc_trade> trade_mapper=new BeanPropertyRowMapper<dc_trade>(dc_trade.class);
@@ -28,37 +28,37 @@ public class TradeDAO {
 			return wanted;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("uid´íÎó,ÕÒ²»µ½ÓÃ»§!");
+			System.out.println("uidé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·!");
 		}
 		return null;
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§È«²¿½»Ò×
-	 * @param itcode Ô±¹¤ºÅ
+	 * è·å–ç”¨æˆ·å…¨éƒ¨äº¤æ˜“
+	 * @param itcode å‘˜å·¥å·
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§È«²¿½»Ò×
+	 * @return ç”¨æˆ·å…¨éƒ¨äº¤æ˜“
 	 */
 	public List<dc_trade> getTradesByItcode(String itcode,JdbcTemplate jdbcTemplate){
 		dc_user user=UserDAO.getUserByItcode(itcode, jdbcTemplate);
 		return getTradesByUid(user.getUid(), jdbcTemplate);
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§È«²¿½»Ò×
-	 * @param username ÓÃ»§Ãû
+	 * è·å–ç”¨æˆ·å…¨éƒ¨äº¤æ˜“
+	 * @param username ç”¨æˆ·å
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§È«²¿½»Ò×
+	 * @return ç”¨æˆ·å…¨éƒ¨äº¤æ˜“
 	 */
 	public List<dc_trade> getTradesByUser(String username,JdbcTemplate jdbcTemplate){
 		dc_user user=UserDAO.getUserByName(username, jdbcTemplate);
 		return getTradesByUid(user.getUid(), jdbcTemplate);
 	}
 	/**
-	 * »ñÈ¡Ò»¶ÎÊ±¼äÄÚÓÃ»§È«²¿½»Ò×
-	 * @param uid ÓÃ»§id
-	 * @param start ¿ªÊ¼Ê±¼ä
-	 * @param end ½áÊøÊ±¼ä
+	 * è·å–ä¸€æ®µæ—¶é—´å†…ç”¨æˆ·å…¨éƒ¨äº¤æ˜“
+	 * @param uid ç”¨æˆ·id
+	 * @param start å¼€å§‹æ—¶é—´
+	 * @param end ç»“æŸæ—¶é—´
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§²¿·Ö½»Ò×
+	 * @return ç”¨æˆ·éƒ¨åˆ†äº¤æ˜“
 	 */
 	public List<dc_trade> getTimeTradesByUid(int uid,String start,String end,JdbcTemplate jdbcTemplate){
 		RowMapper<dc_trade> trade_mapper=new BeanPropertyRowMapper<dc_trade>(dc_trade.class);
@@ -75,29 +75,29 @@ public class TradeDAO {
 			return wanted;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("uid´íÎó,ÕÒ²»µ½ÓÃ»§Ïà¹Ø½»Ò×¼ÇÂ¼!");
+			System.out.println("uidé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·ç›¸å…³äº¤æ˜“è®°å½•!");
 		}
 		return null;
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§Ò»¶ÎÊ±¼äÈ«²¿½»Ò×
-	 * @param itcode Ô±¹¤ºÅ
-	 * @param start ¿ªÊ¼Ê±¼ä
-	 * @param end ½áÊøÊ±¼ä
+	 * è·å–ç”¨æˆ·ä¸€æ®µæ—¶é—´å…¨éƒ¨äº¤æ˜“
+	 * @param itcode å‘˜å·¥å·
+	 * @param start å¼€å§‹æ—¶é—´
+	 * @param end ç»“æŸæ—¶é—´
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§²¿·Ö½»Ò×
+	 * @return ç”¨æˆ·éƒ¨åˆ†äº¤æ˜“
 	 */
 	public List<dc_trade> getTimeTradesByItcode(String itcode,String start,String end,JdbcTemplate jdbcTemplate){
 		dc_user user=UserDAO.getUserByItcode(itcode, jdbcTemplate);
 		return getTimeTradesByUid(user.getUid(),start,end, jdbcTemplate);
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§Ò»¶ÎÊ±¼äÈ«²¿½»Ò×
-	 * @param username ÓÃ»§Ãû
-	 * @param start ¿ªÊ¼Ê±¼ä
-	 * @param end ½áÊøÊ±¼ä
+	 * è·å–ç”¨æˆ·ä¸€æ®µæ—¶é—´å…¨éƒ¨äº¤æ˜“
+	 * @param username ç”¨æˆ·å
+	 * @param start å¼€å§‹æ—¶é—´
+	 * @param end ç»“æŸæ—¶é—´
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§²¿·Ö½»Ò×
+	 * @return ç”¨æˆ·éƒ¨åˆ†äº¤æ˜“
 	 */
 	public List<dc_trade> getTimeTradesByUser(String username,String start,String end,JdbcTemplate jdbcTemplate){
 		dc_user user=UserDAO.getUserByName(username, jdbcTemplate);
@@ -105,13 +105,13 @@ public class TradeDAO {
 	}
 	
 	/**
-	 * ÅĞ¶ÏÓÃ»§Ö§³ö½»Ò×ÄÜ·ñ½øĞĞ
-	 * @param wid Ç®°üid
-	 * @param amount ½»Ò×¶î
+	 * åˆ¤æ–­ç”¨æˆ·æ”¯å‡ºäº¤æ˜“èƒ½å¦è¿›è¡Œ
+	 * @param wid é’±åŒ…id
+	 * @param amount äº¤æ˜“é¢
 	 * @param jdbcTemplate
-	 * @return true¿ÉÒÔ£¬false²»ĞĞ
+	 * @return trueå¯ä»¥ï¼Œfalseä¸è¡Œ
 	 */
-	private static boolean preTrade(int wid,int amount,JdbcTemplate jdbcTemplate) {
+	public static boolean preTrade(int wid,int amount,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_wallet> wallet_mapper=new BeanPropertyRowMapper<dc_wallet>(dc_wallet.class);
 		try {
 			dc_wallet wanted=jdbcTemplate.queryForObject("select * from dc_wallet where wid=?;", wallet_mapper,new Object[] {wid});
@@ -119,22 +119,22 @@ public class TradeDAO {
 			return true;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("wid´íÎó,ÕÒ²»µ½ÓÃ»§Ç®°ü!");
+			System.out.println("widé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·é’±åŒ…!");
 		}
 		return false;
 	}
 	/**
-	 * ´´½¨½»Ò×£ºÓÃ»§ÕË»§×ª³ö
-	 * @param wid ´òÉÍÓÃ»§Ç®°üid
-	 * @param amount Êı¶î
-	 * @param date Ê±¼ä
-	 * @param memo ±¸×¢
+	 * åˆ›å»ºäº¤æ˜“ï¼šç”¨æˆ·è´¦æˆ·è½¬å‡º
+	 * @param wid æ‰“èµç”¨æˆ·é’±åŒ…id
+	 * @param amount æ•°é¢
+	 * @param date æ—¶é—´
+	 * @param memo å¤‡æ³¨
 	 * @param jdbcTemplate
-	 * @return true³É¹¦£¬falseÊ§°Ü
+	 * @return trueæˆåŠŸï¼Œfalseå¤±è´¥
 	 */
 	public static boolean createTrade( String date ,int wid, int amount, String memo,JdbcTemplate jdbcTemplate) {
 		if(preTrade(wid,amount, jdbcTemplate)) {
-			//Ğ´Èë½»Ò×Êı¾İ
+			//å†™å…¥äº¤æ˜“æ•°æ®
 			int i = jdbcTemplate.update("insert into dc_trade(wid,volume,tradetime,tip) values(?,?,?,?)",new Object[] { wid, amount, date, memo });
 			int j = WalletDAO.walletMinusByWid(wid, amount, jdbcTemplate);
 			if (i*j > 0)
@@ -143,26 +143,26 @@ public class TradeDAO {
 		return false;
 	}
 	/**
-	 * ´´½¨·¢ºì°ü½»Ò×
-	 * @param wid Ç®°üid
-	 * @param lucknumber ºì°üÊı¶î
-	 * @param time Ê±¼ä
-	 * @param tip ±¸×¢
+	 * åˆ›å»ºå‘çº¢åŒ…äº¤æ˜“
+	 * @param wid é’±åŒ…id
+	 * @param lucknumber çº¢åŒ…æ•°é¢
+	 * @param time æ—¶é—´
+	 * @param tip å¤‡æ³¨
 	 * @param jdbcTemplate
-	 * @return 1³É¹¦£¬0Ê§°Ü
+	 * @return 1æˆåŠŸï¼Œ0å¤±è´¥
 	 */
 	public static int createTrade(int wid,int lucknumber, String time, String tip,JdbcTemplate jdbcTemplate) {
 		
 		return 0;
 	}
 	/**
-	 * ´´½¨½»Ò×£¬ÓÃ»§ÕË»§×ªÈë
-	 * @param wid Ç®°üid
-	 * @param time Ê±¼ä
-	 * @param amount Êı¶î
-	 * @param tip ±¸×¢
+	 * åˆ›å»ºäº¤æ˜“ï¼Œç”¨æˆ·è´¦æˆ·è½¬å…¥
+	 * @param wid é’±åŒ…id
+	 * @param time æ—¶é—´
+	 * @param amount æ•°é¢
+	 * @param tip å¤‡æ³¨
 	 * @param jdbcTemplate
-	 * @return 1³É¹¦£¬0Ê§°Ü
+	 * @return 1æˆåŠŸï¼Œ0å¤±è´¥
 	 */
 	public static int createTrade(int wid,String time,int amount,String tip,JdbcTemplate jdbcTemplate) {
 		try {
@@ -170,7 +170,7 @@ public class TradeDAO {
 			if(i>0)
 				return 1;
 		}catch(Exception e) {
-			System.out.println("´´½¨³äÖµ¼ÇÂ¼Ê§°Ü£¡");
+			System.out.println("åˆ›å»ºå……å€¼è®°å½•å¤±è´¥ï¼");
 			e.printStackTrace();
 		}
 		return 0;

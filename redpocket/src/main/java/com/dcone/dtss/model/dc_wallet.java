@@ -2,7 +2,7 @@ package com.dcone.dtss.model;
 /**
  * 
  * @author wrs
- *记录用户钱包
+ *璁板綍鐢ㄦ埛閽卞寘
  */
 public class dc_wallet {
 	int uid;
@@ -11,9 +11,9 @@ public class dc_wallet {
 	public dc_wallet() {}
 	/**
 	 * 
-	 * @param uid 用户id
-	 * @param wid 钱包id
-	 * @param amount 钱包余额
+	 * @param uid 鐢ㄦ埛id
+	 * @param wid 閽卞寘id
+	 * @param amount 閽卞寘浣欓
 	 */
 	public dc_wallet(int uid, int wid,int amount) {
 		this.uid = uid;
@@ -39,7 +39,7 @@ public class dc_wallet {
 		this.amount = amount;
 	}
 	/**
-	 * 串行输出
+	 * 涓茶杈撳嚭
 	 */
 	@Override
 	public String toString() {

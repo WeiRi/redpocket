@@ -15,20 +15,20 @@ import com.dcone.dtss.model.dc_wallet;
 /**
  * 
  * @author wrs
- *ºì°üÓêÏß³Ì
- *ĞèÒª¼ÓÈëJdbcTemplate£¬²¢ÇÒĞèÒª½«flagÖÃÎªtrue
+ *çº¢åŒ…é›¨çº¿ç¨‹
+ *éœ€è¦åŠ å…¥JdbcTemplateï¼Œå¹¶ä¸”éœ€è¦å°†flagç½®ä¸ºtrue
  */
 public class LuckyNumberThread extends Thread {
 	boolean flag = false;
 	JdbcTemplate template;
 	int round=0;
 	/**
-	 * ¿ªÊ¼·¢·Åºì°ü
+	 * å¼€å§‹å‘æ”¾çº¢åŒ…
 	 */
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		System.out.println("ºì°üÓê¿ªÊ¼¿©!");
+		System.out.println("çº¢åŒ…é›¨å¼€å§‹å’¯!");
 		List<dc_wallet> wallets = WalletDAO.getAllWallets(template);
 		System.out.println("flag is:"+flag);
 		if(wallets==null)

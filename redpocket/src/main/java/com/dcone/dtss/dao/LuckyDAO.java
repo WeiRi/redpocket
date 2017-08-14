@@ -11,21 +11,21 @@ import com.dcone.dtss.model.ln_record;
 /**
  * 
  * @author wrs
- *·¢ºì°ü²Ù×÷
+ *å‘çº¢åŒ…æ“ä½œ
  */
 public class LuckyDAO {
 
 	
-	/**ºì°üÓê£»
-	 * ÐÞ¸ÄÏµÍ³ºì°ü×ÜÓà¶î;
-	 * Ìí¼Óºì°ü¼ÇÂ¼;
-	 * Ìí¼Ó½»Ò×¼ÇÂ¼;
-	 * ¸øÓÃ»§Ç®°ü¼ÓÈëÖ¸¶¨Êý¶î;
+	/**çº¢åŒ…é›¨ï¼›
+	 * ä¿®æ”¹ç³»ç»Ÿçº¢åŒ…æ€»ä½™é¢;
+	 * æ·»åŠ çº¢åŒ…è®°å½•;
+	 * æ·»åŠ äº¤æ˜“è®°å½•;
+	 * ç»™ç”¨æˆ·é’±åŒ…åŠ å…¥æŒ‡å®šæ•°é¢;
 	 * @param jdbcTemplate
 	 * @param wallet
 	 * @param lucknumber
 	 * @param round
-	 * @return 1³É¹¦£¬0Á¬½ÓÊ§°Ü£¬-1Ä³²½²Ù×÷Ê§°Ü
+	 * @return 1æˆåŠŸï¼Œ0è¿žæŽ¥å¤±è´¥ï¼Œ-1æŸæ­¥æ“ä½œå¤±è´¥
 	 */
 	public static int LuckyRain(JdbcTemplate jdbcTemplate, dc_wallet wallet, int lucknumber,int round) {
 		try {
@@ -39,7 +39,7 @@ public class LuckyDAO {
 			int i = L_NumberDAO.luckyRain(round, lucknumber, jdbcTemplate);
 			int j = LN_RecordDAO.newRecord(round, wallet, lucknumber, temp1, jdbcTemplate);
 			int k = WalletDAO.walletAddByWid(wallet.getWid(), lucknumber, jdbcTemplate);
-			int l = TradeDAO.createTrade(wallet.getWid(), temp1, lucknumber, "µÚ"+round+"ÂÖºì°üÓê", jdbcTemplate);
+			int l = TradeDAO.createTrade(wallet.getWid(), temp1, lucknumber, "ç¬¬"+round+"è½®çº¢åŒ…é›¨", jdbcTemplate);
 			if (i * j * k * l > 0) {
 				// ok
 				List<ln_record> wanted=LN_RecordDAO.getAllRecords(jdbcTemplate);

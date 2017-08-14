@@ -6,14 +6,14 @@ import com.dcone.dtss.model.dc_user;
 /**
  * 
  * @author wrs
- *´¦ÀíÓÃ»§ĞÅÏ¢
+ *å¤„ç†ç”¨æˆ·ä¿¡æ¯
  */
 public class UserDAO {
 	/**
-	 * »ñÈ¡ÓÃ»§
-	 * @param uid ÓÃ»§id
+	 * è·å–ç”¨æˆ·
+	 * @param uid ç”¨æˆ·id
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§
+	 * @return ç”¨æˆ·
 	 */
 	public static dc_user getUserByUid(int uid,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_user> user_mapper=new BeanPropertyRowMapper<dc_user>(dc_user.class);
@@ -22,15 +22,15 @@ public class UserDAO {
 			return wanted;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("uid´íÎó,ÕÒ²»µ½ÓÃ»§!");
+			System.out.println("uidé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·!");
 		}
 		return null;
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§
-	 * @param itcode ÓÃ»§Ô±¹¤ºÅ
+	 * è·å–ç”¨æˆ·
+	 * @param itcode ç”¨æˆ·å‘˜å·¥å·
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§
+	 * @return ç”¨æˆ·
 	 */
 	public static dc_user getUserByItcode(String itcode,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_user> user_mapper=new BeanPropertyRowMapper<dc_user>(dc_user.class);
@@ -39,15 +39,15 @@ public class UserDAO {
 			return wanted;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("itcode´íÎó,ÕÒ²»µ½ÓÃ»§!");
+			System.out.println("itcodeé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·!");
 		}
 		return null;
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§
-	 * @param username ÓÃ»§Ãû
+	 * è·å–ç”¨æˆ·
+	 * @param username ç”¨æˆ·å
 	 * @param jdbcTemplate
-	 * @return ÓÃ»§
+	 * @return ç”¨æˆ·
 	 */
 	public static dc_user getUserByName(String username,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_user> user_mapper=new BeanPropertyRowMapper<dc_user>(dc_user.class);
@@ -56,16 +56,16 @@ public class UserDAO {
 			return wanted;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("ÓÃ»§Ãû´íÎó,ÕÒ²»µ½ÓÃ»§!");
+			System.out.println("ç”¨æˆ·åé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·!");
 		}
 		return null;
 	}
 	/**
-	 * ÔÚ³äÖµÇ°²âÊÔÓÃ»§Ô±¹¤ºÅÓëÓÃ»§ÃûÊÇ·ñ´æÔÚÇÒÆ¥Åä
-	 * @param itcode Ô±¹¤ºÅ
-	 * @param username ÓÃ»§Ãû
+	 * åœ¨å……å€¼å‰æµ‹è¯•ç”¨æˆ·å‘˜å·¥å·ä¸ç”¨æˆ·åæ˜¯å¦å­˜åœ¨ä¸”åŒ¹é…
+	 * @param itcode å‘˜å·¥å·
+	 * @param username ç”¨æˆ·å
 	 * @param jdbcTemplate
-	 * @return trueĞÅÏ¢ÕıÈ·£¬falseĞÅÏ¢´íÎó
+	 * @return trueä¿¡æ¯æ­£ç¡®ï¼Œfalseä¿¡æ¯é”™è¯¯
 	 */
 	public static boolean checkItcodeUsername(String itcode,String username,JdbcTemplate jdbcTemplate) {
 		try {
@@ -73,20 +73,20 @@ public class UserDAO {
 			if(i==1)
 				return true;
 			else {
-				System.out.println("ÓÃ»§Ãû»òitcodeÖØ¸´£¡");
+				System.out.println("ç”¨æˆ·åæˆ–itcodeé‡å¤ï¼");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("ÓÃ»§ÃûºÍitcode²»Æ¥Åä£¡");
+			System.out.println("ç”¨æˆ·åå’Œitcodeä¸åŒ¹é…ï¼");
 		}
 		return false;
 	}
 	/**
-	 * ´´½¨ÓÃ»§
-	 * @param itcode Ô±¹¤ºÅ
-	 * @param username ÓÃ»§Ãû
+	 * åˆ›å»ºç”¨æˆ·
+	 * @param itcode å‘˜å·¥å·
+	 * @param username ç”¨æˆ·å
 	 * @param jdbcTemplate
-	 * @return 1³É¹¦£¬-2²åÈëÊ§°Ü£¬-1Ô±¹¤ºÅ»òÓÃ»§ÃûÖØ¸´£¬0Á¬½ÓÊ§°Ü
+	 * @return 1æˆåŠŸï¼Œ-2æ’å…¥å¤±è´¥ï¼Œ-1å‘˜å·¥å·æˆ–ç”¨æˆ·åé‡å¤ï¼Œ0è¿æ¥å¤±è´¥
 	 */
 	public static int createUser(String itcode, String username,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_user> user_mapper=new BeanPropertyRowMapper<dc_user>(dc_user.class);
@@ -105,16 +105,16 @@ public class UserDAO {
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("³õÊ¼»¯Ê§°Ü£¡itcode»òÓÃ»§ÃûÖØ¸´£¡");
+			System.out.println("åˆå§‹åŒ–å¤±è´¥ï¼itcodeæˆ–ç”¨æˆ·åé‡å¤ï¼");
 		}
 		return 0;
 	}
 	/**
-	 * ÔÚ×¢²áÊ±¼ì²éÔ±¹¤ºÅºÍÓÃ»§ÃûÊÇ·ñÖØ¸´
-	 * @param itcode Ô±¹¤ºÅ
-	 * @param username ÓÃ»§Ãû
+	 * åœ¨æ³¨å†Œæ—¶æ£€æŸ¥å‘˜å·¥å·å’Œç”¨æˆ·åæ˜¯å¦é‡å¤
+	 * @param itcode å‘˜å·¥å·
+	 * @param username ç”¨æˆ·å
 	 * @param jdbcTemplate
-	 * @return true²»ÖØ¸´£¬¿ÉÒÔÊ¹ÓÃ£»falseÖØ¸´£¬²»¿ÉÊ¹ÓÃ
+	 * @return trueä¸é‡å¤ï¼Œå¯ä»¥ä½¿ç”¨ï¼›falseé‡å¤ï¼Œä¸å¯ä½¿ç”¨
 	 */
 	public static boolean checkUserInfo(String itcode, String username,JdbcTemplate jdbcTemplate) {
 		try {
@@ -122,18 +122,18 @@ public class UserDAO {
 			if(i==0)
 				return true;
 			else {
-				System.out.println("ÓÃ»§Ãû»òitcodeÖØ¸´£¡");
+				System.out.println("ç”¨æˆ·åæˆ–itcodeé‡å¤ï¼");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("ÓÃ»§ÃûºÍitcode²»Æ¥Åä£¡");
+			System.out.println("ç”¨æˆ·åå’Œitcodeä¸åŒ¹é…ï¼");
 		}
 		return false;
 	}
 	/**
-	 * ĞŞ¸ÄÊı¾İ¿â,ĞŞ¸Ämodel,Íê³ÉÓÃ»§Ëø¶¨
-	 * @param uid ÓÃ»§id
-	 * @return trueËø¶¨³É¹¦£¬falseËø¶¨Ê§°Ü
+	 * ä¿®æ”¹æ•°æ®åº“,ä¿®æ”¹model,å®Œæˆç”¨æˆ·é”å®š
+	 * @param uid ç”¨æˆ·id
+	 * @return trueé”å®šæˆåŠŸï¼Œfalseé”å®šå¤±è´¥
 	 */
 	public static boolean lockUserById(int uid,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_user> user_mapper=new BeanPropertyRowMapper<dc_user>(dc_user.class);
@@ -143,14 +143,14 @@ public class UserDAO {
 				return true;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("uid´íÎó,ÕÒ²»µ½ÓÃ»§!");
+			System.out.println("uidé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·!");
 		}
 		return false;
 	}
 	/**
-	 * Ëø¶¨ÓÃ»§
-	 * @param itcode Ô±¹¤ºÅ
-	 * @return trueËø¶¨³É¹¦£¬falseËø¶¨Ê§°Ü
+	 * é”å®šç”¨æˆ·
+	 * @param itcode å‘˜å·¥å·
+	 * @return trueé”å®šæˆåŠŸï¼Œfalseé”å®šå¤±è´¥
 	 */
 	public static boolean lockUserByItcode(String itcode,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_user> user_mapper=new BeanPropertyRowMapper<dc_user>(dc_user.class);
@@ -160,15 +160,15 @@ public class UserDAO {
 				return true;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("itcode´íÎó,ÕÒ²»µ½ÓÃ»§!");
+			System.out.println("itcodeé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·!");
 		}
 		return false;
 	}
 	/**
-	 * ½âËøÓÃ»§
-	 * @param uid ÓÃ»§id
+	 * è§£é”ç”¨æˆ·
+	 * @param uid ç”¨æˆ·id
 	 * @param jdbcTemplate
-	 * @return true½âËø³É¹¦£¬false½âËøÊ§°Ü
+	 * @return trueè§£é”æˆåŠŸï¼Œfalseè§£é”å¤±è´¥
 	 */
 	public static boolean unlockUserByID(int uid,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_user> user_mapper=new BeanPropertyRowMapper<dc_user>(dc_user.class);
@@ -178,15 +178,15 @@ public class UserDAO {
 				return true;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("uid´íÎó,ÕÒ²»µ½ÓÃ»§!");
+			System.out.println("uidé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·!");
 		}
 		return false;
 	}
 	/**
-	 * ½âËøÓÃ»§
-	 * @param itcode Ô±¹¤ºÅ
+	 * è§£é”ç”¨æˆ·
+	 * @param itcode å‘˜å·¥å·
 	 * @param jdbcTemplate
-	 * @return true½âËø³É¹¦£¬false½âËøÊ§°Ü
+	 * @return trueè§£é”æˆåŠŸï¼Œfalseè§£é”å¤±è´¥
 	 */
 	public static boolean unlockUserByItcode(String itcode,JdbcTemplate jdbcTemplate) {
 		RowMapper<dc_user> user_mapper=new BeanPropertyRowMapper<dc_user>(dc_user.class);
@@ -196,15 +196,15 @@ public class UserDAO {
 				return true;
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("itcode´íÎó,ÕÒ²»µ½ÓÃ»§!");
+			System.out.println("itcodeé”™è¯¯,æ‰¾ä¸åˆ°ç”¨æˆ·!");
 		}
 		return false;
 	}
 	/**
-	 * ¼ì²éÓÃ»§ÊÇ·ñ±»Ëø¶¨
-	 * @param uid ÓÃ»§id
+	 * æ£€æŸ¥ç”¨æˆ·æ˜¯å¦è¢«é”å®š
+	 * @param uid ç”¨æˆ·id
 	 * @param jdbcTemplate
-	 * @return trueËø¶¨£¬falseÎ´±»Ëø¶¨
+	 * @return trueé”å®šï¼Œfalseæœªè¢«é”å®š
 	 */
 	public static boolean isLock(int uid,JdbcTemplate jdbcTemplate) {
 		try {
@@ -213,16 +213,16 @@ public class UserDAO {
 				return true;
 		}
 		catch(Exception e) {
-			System.out.println("²éÑ¯ÓÃ»§×´Ì¬Ê§°Ü£¡");
+			System.out.println("æŸ¥è¯¢ç”¨æˆ·çŠ¶æ€å¤±è´¥ï¼");
 			e.printStackTrace();
 		}
 		return false;
 	}
 	/**
-	 * ²éÑ¯ÓÃ»§ÊÇ·ñ±»Ëø¶¨
-	 * @param itcode Ô±¹¤ºÅ
+	 * æŸ¥è¯¢ç”¨æˆ·æ˜¯å¦è¢«é”å®š
+	 * @param itcode å‘˜å·¥å·
 	 * @param jdbcTemplate
-	 * @return trueËø¶¨£¬falseÎ´±»Ëø¶¨
+	 * @return trueé”å®šï¼Œfalseæœªè¢«é”å®š
 	 */
 	public static boolean isLock(String itcode,JdbcTemplate jdbcTemplate) {
 		dc_user user=getUserByItcode(itcode,jdbcTemplate);

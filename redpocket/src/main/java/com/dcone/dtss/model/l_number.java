@@ -2,7 +2,7 @@ package com.dcone.dtss.model;
 /**
  * 
  * @author wrs
- *¼ÇÂ¼ºì°üÕË»§
+ *è®°å½•çº¢åŒ…è´¦æˆ·
  */
 public class l_number {
 	int lid;
@@ -18,10 +18,10 @@ public class l_number {
 	public l_number() {}
 	/**
 	 * 
-	 * @param l_id ºì°üÕË»§id
-	 * @param round ºì°üÓêÂÖ´Î
-	 * @param total ºì°üÕË»§Óà¶î
-	 * @param tips ±¸×¢
+	 * @param l_id çº¢åŒ…è´¦æˆ·id
+	 * @param round çº¢åŒ…é›¨è½®æ¬¡
+	 * @param total çº¢åŒ…è´¦æˆ·ä½™é¢
+	 * @param tips å¤‡æ³¨
 	 */
 	public l_number(int l_id, int round, int total,String tips) {
 		super();
@@ -31,7 +31,7 @@ public class l_number {
 		this.tips=tips;
 	}
 	/**
-	 * ´®ĞĞÊä³ö
+	 * ä¸²è¡Œè¾“å‡º
 	 */
 	@Override
 	public String toString() {

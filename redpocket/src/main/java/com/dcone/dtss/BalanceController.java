@@ -32,7 +32,7 @@ import form.WalletForm;
 /**
  * 
  * @author wrs
- *Ç®°üÕË»§²Ù×÷
+ *é’±åŒ…è´¦æˆ·æ“ä½œ
  */
 @Controller
 public class BalanceController {
@@ -41,44 +41,53 @@ public class BalanceController {
 	@Autowired
     JdbcTemplate jdbcTemplate;
 	/**
-	 * ½øÈë³äÖµÒ³Ãæ
+	 * è¿›å…¥å……å€¼é¡µé¢
 	 * @return
 	 */
 	@RequestMapping(value="/balance_add", method=RequestMethod.GET)
 	public String balanceAdd() {
 		return "balance_add";
 	}
+
+/**
+	 * è¿›å…¥çº¢åŒ…ç•Œé¢
+	 * @return
+	 */
+	@RequestMapping(value="/wallet", method=RequestMethod.GET)
+	public String wallet() {
+		return "wallet";
+	}
 	/**
-	 * ½øĞĞ³äÖµ²Ù×÷
-	 * @param walletForm »ñÈ¡±íµ¥ÄÚÈİ
-	 * @param bindingResult ¼ì²é±íµ¥ÄÚÈİÊÇ·ñÓĞ´í
+	 * è¿›è¡Œå……å€¼æ“ä½œ
+	 * @param walletForm è·å–è¡¨å•å†…å®¹
+	 * @param bindingResult æ£€æŸ¥è¡¨å•å†…å®¹æ˜¯å¦æœ‰é”™
 	 * @param locale
 	 * @param model
-	 * @return ³äÖµ½á¹û½çÃæ
+	 * @return å……å€¼ç»“æœç•Œé¢
 	 */
 	@RequestMapping(value="/balance_adding")
 	public String balanceAdding(@Valid WalletForm walletForm ,BindingResult bindingResult ,Locale locale,  Model model) {
-		logger.info("itcode:" +walletForm.getItcode() +"username:"+walletForm.getUsername() + " ³äÖµ "+ walletForm.getAmount());
+		logger.info("itcode:" +walletForm.getItcode() +"username:"+walletForm.getUsername() + " å……å€¼ "+ walletForm.getAmount());
 		logger.info(jdbcTemplate.toString());
 		String result = "";
 		if (bindingResult.hasErrors()) {
-			result="<br>´íÎó£¡¾ßÌåÈçÏÂ£º"+"<br>";
+			result="<br>é”™è¯¯ï¼å…·ä½“å¦‚ä¸‹ï¼š"+"<br>";
 			List<ObjectError> errors = bindingResult.getAllErrors();
 			for (ObjectError error : errors) {
 				result += error.getDefaultMessage() + "<br>";
 			}
-			System.out.println("walletformĞÅÏ¢:"+walletForm.toString());
+			System.out.println("walletformä¿¡æ¯:"+walletForm.toString());
 			model.addAttribute("msg", result);
 			return "balance_add";
 		} else {
 			int i = WalletDAO.balance_add(walletForm.getItcode(), walletForm.getUsername(), walletForm.getAmount(),
 					locale, jdbcTemplate);
 			if (i == 1) {
-				result = "³äÖµ³É¹¦";
+				result = "å……å€¼æˆåŠŸ";
 			} else if (i == -1 || i == -2) {
-				result = "ÓÃ»§ĞÅÏ¢ÌîĞ´´íÎó!";
+				result = "ç”¨æˆ·ä¿¡æ¯å¡«å†™é”™è¯¯!";
 			} else {
-				result = "³äÖµÊ§°Ü,ÇëÉÔºóÔÙÊÔ!";
+				result = "å……å€¼å¤±è´¥,è¯·ç¨åå†è¯•!";
 			}
 			TradeDAO td = new TradeDAO();
 			/*List<dc_trade> wanted = td.getTimeTradesByItcode(walletForm.getItcode(), "2017-08-03 10:30:00",
@@ -86,7 +95,10 @@ public class BalanceController {
 			for (dc_trade temp : wanted) {
 				System.out.println(temp.toString());
 			}*/
+			dc_wallet wallet = WalletDAO.getWalletByItcode(walletForm.getItcode(), jdbcTemplate);
+			model.addAttribute("money", wallet.getAmount());
 			model.addAttribute("result", result);
+			model.addAttribute("username", walletForm.getUsername());
 			return "balance_add_result";
 		}
 	}

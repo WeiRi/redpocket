@@ -2,7 +2,7 @@ package com.dcone.dtss.model;
 /**
  * 
  * @author wrs
- * ´ËÊı¾İ½á¹¹¼ÇÂ¼ºì°ü·¢·Å¼ÇÂ¼
+ * æ­¤æ•°æ®ç»“æ„è®°å½•çº¢åŒ…å‘æ”¾è®°å½•
  */
 public class ln_record {
 	int rid;
@@ -11,7 +11,7 @@ public class ln_record {
 	int round;
 	String tradetime;
 	/**
-	 * ´®ĞĞÊä³ö
+	 * ä¸²è¡Œè¾“å‡º
 	 */
 	@Override
 	public String toString() {
@@ -27,10 +27,10 @@ public class ln_record {
 	public ln_record() {}
 	/**
 	 * 
-	 * @param r_id Á÷Ë®ºÅ
-	 * @param wid Ç®°üid
-	 * @param luck_number ºì°üÊı¶î
-	 * @param round ºì°üÓêÂÖ´Î
+	 * @param r_id æµæ°´å·
+	 * @param wid é’±åŒ…id
+	 * @param luck_number çº¢åŒ…æ•°é¢
+	 * @param round çº¢åŒ…é›¨è½®æ¬¡
 	 */
 	public ln_record(int r_id, int wid, int luck_number, int round,String tradetime) {
 		super();
